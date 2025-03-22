@@ -3,6 +3,13 @@
 #include <iomanip>
 using namespace std;
 
+double remap(double value){
+    double a = 3.0/4.0;
+    double b = -7.0/4.0;
+    double num = a*value+b;
+    return num;
+}
+
 int main()
 {
     ifstream file("./data.txt");
@@ -17,10 +24,8 @@ int main()
     double temp = 0.0;
     ofstream myFile("./results.txt");
     myFile << setprecision(16) << scientific;
-    double a = 3.0/4.0;
-    double b = -7.0/4.0; 
     while(file >> temp){
-        val = a*temp+b;
+        val = remap(temp);
         sum = sum + val;
         mean = sum / i++;
         myFile << mean << endl;
